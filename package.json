@@ -4,8 +4,9 @@
   "description": "Utility to wait for a TCP port to open.",
   "main": "./src/wait-port.js",
   "scripts": {
-    "test": "mocha -t 60000 ./src/**/*.spec.js",
-    "debug": "mocha --inspect --debug-brk ./src/**/*.spec.js"
+    "lint": "eslint .",
+    "test": "nyc --report-dir 'artifacts/coverage' -x 'src/**/*.spec.js' --reporter=html --reporter=text mocha -t 10000 src/**/*.spec.js",
+    "debug": "mocha --inspect --debug-brk src/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,8 @@
   "homepage": "https://github.com/dwmkerr/wait-port#readme",
   "devDependencies": {
     "eslint": "^3.19.0",
-    "mocha": "^3.3.0"
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0",
+    "nyc": "^10.3.2"
   }
 }
