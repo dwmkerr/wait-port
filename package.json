@@ -5,7 +5,8 @@
   "main": "./src/wait-port.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "nyc --report-dir 'artifacts/coverage' -x 'src/**/*.spec.js' --reporter=html --reporter=lcovonly --reporter=text mocha -t 10000 src/**/*.spec.js",
+    "test": "nyc --report-dir 'artifacts/coverage' -x 'src/**/*.spec.js' --reporter=html --reporter=text mocha -t 10000 src/**/*.spec.js",
+    "report-coverage": "nyc report --reporter=text-lcov > ./artifacts/coverage/coverage.lcov && codecov",
     "debug": "mocha --inspect --debug-brk src/**/*.spec.js"
   },
   "repository": {
@@ -19,9 +20,10 @@
   },
   "homepage": "https://github.com/dwmkerr/wait-port#readme",
   "devDependencies": {
+    "codecov": "^2.2.0",
     "eslint": "^3.19.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.3.0",
     "nyc": "^10.3.2"
   }
-=
+}
