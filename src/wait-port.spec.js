@@ -7,25 +7,25 @@ describe('wait-port', () => {
 
   it('should wait until a port is open', (done) => {
 
-    //  Start waiting for port 9021 to open.
-    let status = undefined;
+    //  A variable which will hold the server we create for testing.
+    let server = null;
+
+    //  Start waiting for port 9021 to open. If it opens we pass, otherwise we
+    //  fail.
     waitPort({ host: '127.0.0.1', port: 9021 })
-      .then(() => { status = true; })
-      .catch((err) => { console.log(err); status = false; });
-
-    //  Check we have not yet resolved.
-    assert.equal(status, undefined, 'Status should still be undefined.');
-
-    //  Open up the port.
-    setTimeout(() => {
-      const server = net.createServer();
-      server.listen(9021, '127.0.0.1', () => {
-        setTimeout(() => {
-          assert.equal(status, true, 'Status should show port is open.');
-          server.close(done);
-        }, 1000);
+      .then((open) => {
+        assert.equal(open, true, 'Waiting for the port should find it to open.');
+        server.close();
+        done();
+      })
+      .catch((err) => {
+        assert.fail(err, 'Waiting for the port should not fail.');
+        done();
       });
-    }, 10000);
+
+    //  Open the port for connections. Should cause the test to pass.
+    server = net.createServer();
+    server.listen(9021, '127.0.0.1');
   });
 
   xit('should timeout after the specified time', () => {
