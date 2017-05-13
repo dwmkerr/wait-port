@@ -6,4 +6,4 @@ test:
     - npm run lint
     - npm test
   post:
-    - bash <(curl -s https://codecov.io/bash)
+    - npm report-coverage
