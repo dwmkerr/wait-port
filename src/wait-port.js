@@ -71,17 +71,15 @@ function tryConnect(options, timeout) {
   });
 }
 
-function waitPort(params) {
+function waitPort(params, timeout) {
   return new Promise((resolve, reject) => {
-    //  Grab the host and port.
+    //  Create the parameters.
     const port = params.port;
     const host = params.host || 'localhost';
+    const interval = params.interval || 1000;
 
-    //  The variable which will hold our interval.
-    let timer = null;
-
-    //  Set the loop interval.
-    const loopInterval = 1000;
+    //  Keep track of the start time (needed for timeout calcs).
+    const startTime = new Date();
 
     //  Don't wait for more than connectTimeout to try and connect.
     const connectTimeout = 1000;
@@ -93,11 +91,16 @@ function waitPort(params) {
           //  We'll try the loop again, after the interval.
           console.log(`Socket status is: ${open}`);
 
-          //  If the socket isn't open, try again.
-          if (!open) return setTimeout(loop, loopInterval);
-
           //  The socket is open, we're done.
-          return resolve(true);
+          if (open) return resolve(true);
+
+          //  If we have a timeout, and we've passed it, we're done.
+          if (timeout && (new Date() - startTime) > timeout) {
+            return resolve(false);
+          }
+
+          //  Run the loop again.
+          return setTimeout(loop, interval);
         })
         .catch((err) => {
           console.log(`Unhandled error occured trying to connect: ${err}`);

@@ -1,6 +1,5 @@
 const assert = require('assert');
 const net = require('net');
-const process = require('process');
 const waitPort = require('./wait-port');
 
 describe('wait-port', () => {
@@ -14,12 +13,12 @@ describe('wait-port', () => {
     //  fail.
     waitPort({ host: '127.0.0.1', port: 9021 })
       .then((open) => {
-        assert.equal(open, true, 'Waiting for the port should find it to open.');
+        assert(open === true, 'Waiting for the port should find it to open.');
         server.close();
         done();
       })
       .catch((err) => {
-        assert.fail(err, 'Waiting for the port should not fail.');
+        assert(!err, 'Waiting for the port should not fail.');
         done();
       });
 
@@ -28,10 +27,25 @@ describe('wait-port', () => {
     server.listen(9021, '127.0.0.1');
   });
 
-  xit('should timeout after the specified time', () => {
-    // start waiting
-    // show the promise is not resolved
-    // wait
-    // show the promise rejects
+  it('should timeout after the specified time', (done) => {
+    const timeout = 5000;
+    const delta = 500;
+
+    //  Start waiting for port 9021 to open.
+    const start = new Date();
+    waitPort({ host: '127.0.0.1', port: 9021 }, timeout)
+      .then((open) => {
+        assert(open === false, 'The port should not be open.');
+        
+        //  Make sure we are close to the timeout.
+        const elapsed = new Date() - start;
+        assert(((timeout - delta) < elapsed) && (elapsed < (timeout + delta)),
+          `Timeout took ${elapsed}ms, should be close to ${timeout}ms.`);
+
+        done();
+      })
+      .catch((err) => {
+        assert(!err, 'Waiting for the port should not fail.');
+      });
   });
 });
