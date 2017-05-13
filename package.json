@@ -1,0 +1,24 @@
+{
+  "name": "wait-port",
+  "version": "0.1.0",
+  "description": "Utility to wait for a TCP port to open.",
+  "main": "./src/wait-port.js",
+  "scripts": {
+    "test": "mocha -t 60000 ./src/**/*.spec.js",
+    "debug": "mocha --inspect --debug-brk ./src/**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dwmkerr/wait-port.git"
+  },
+  "author": "Dave Kerr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dwmkerr/wait-port/issues"
+  },
+  "homepage": "https://github.com/dwmkerr/wait-port#readme",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "mocha": "^3.3.0"
+  }
+}
