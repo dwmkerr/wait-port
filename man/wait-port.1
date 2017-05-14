@@ -1,15 +1,16 @@
-Usage: wait-port [options] <target>
-
-Wait for a target to accept connections, e.g: wait-port localhost:8080
-
-Options:
-
--h, --help         output usage information
--V, --version      output the version number
--t, --timeout <n>  Timeout
-
-Examples:
-
-$ wait-port 3000
-$ wait-port -t 10 :8080
-$ wait-port google.com:443
+.TH WAIT-PORT 1
+.SH NAME
+wait-port \- waits for a target to accept TCP/IP connections
+.SH SYNOPSIS
+.B wait-port
+[\fB\-t\fR \fITIMEOUT\fR]
+[\fB\-\-timeout\fR \fITIMEOUT\fR]
+.IR target ...
+.SH DESCRIPTION
+.B wait-port
+waits for a target to accept TCP/IP connections.
+.SH OPTIONS
+.TP
+.BR \-t ", " \-\-timeout =\fITIMEOUT\fR
+Optional. Set the timeout, in milliseconds. Use 0 for no timeout.
+Default is one bit.
