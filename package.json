@@ -2,12 +2,15 @@
   "name": "wait-port",
   "version": "0.1.0",
   "description": "Utility to wait for a TCP port to open.",
-  "main": "./src/wait-port.js",
+  "main": "./lib/wait-port.js",
+  "bin": {
+    "wait-port": "./bin/wait-port.js"
+  },
   "scripts": {
     "lint": "eslint .",
-    "test": "nyc --report-dir 'artifacts/coverage' -x 'src/**/*.spec.js' --reporter=html --reporter=text mocha -t 10000 src/**/*.spec.js",
+    "test": "DEBUG=wait-port nyc --report-dir 'artifacts/coverage' -x 'lib/**/*.spec.js' --reporter=html --reporter=text mocha -t 10000 lib/**/*.spec.js",
     "report-coverage": "nyc report --reporter=text-lcov > ./artifacts/coverage/coverage.lcov && codecov",
-    "debug": "mocha --inspect --debug-brk src/**/*.spec.js"
+    "debug": "DEBUG=wait-port mocha --inspect --debug-brk lib/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +28,9 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.3.0",
     "nyc": "^10.3.2"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "debug": "^2.6.6"
   }
 }

@@ -1,0 +1,15 @@
+Usage: wait-port [options] <target>
+
+Wait for a target to accept connections, e.g: wait-port localhost:8080
+
+Options:
+
+-h, --help         output usage information
+-V, --version      output the version number
+-t, --timeout <n>  Timeout
+
+Examples:
+
+$ wait-port 3000
+$ wait-port -t 10 :8080
+$ wait-port google.com:443
