@@ -2,6 +2,7 @@
 
 Simple binary to wait for a port to open. Useful for docker-compose and general server side activities.
 
+- [Installation](#installation)
 - [Usage](#usage)
   - [Parameters](#parameters)
   - [Error Codes](#error-codes)
@@ -13,6 +14,24 @@ Simple binary to wait for a port to open. Useful for docker-compose and general 
   - [Manpage](#manpage)
   - [Releasing](#releasing)
   - [Timeouts](#timeouts)
+
+# Installation
+
+Install globally with `npm`:
+
+```
+$ npm install -g wait-port
+```
+
+If installing locally, run the binary from the local node modules binary folder:
+
+```
+$ npm install wait-port
+wait-port@0.1.3
+
+$ ./node_modules/.bin/wait-port 8080
+Port 8080 is accepting connections!
+```
 
 # Usage
 
