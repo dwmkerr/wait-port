@@ -6,6 +6,7 @@
   "bin": {
     "wait-port": "./bin/wait-port.js"
   },
+  "man": "./man/wait-port.1",
   "scripts": {
     "lint": "eslint .",
     "test": "DEBUG=wait-port nyc --report-dir 'artifacts/coverage' -x 'lib/**/*.spec.js' --reporter=html --reporter=text mocha -t 10000 lib/**/*.spec.js",
