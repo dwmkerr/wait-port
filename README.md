@@ -2,7 +2,16 @@
 
 Simple binary to wait for a port to open. Useful for docker-compose and general server side activities.
 
-## Usage
+- [Usage](#usage)
+- [API](#api)
+- [Developer Guide](#developer-guide)
+	- [Debugging](#debugging)
+	- [Testing](#testing)
+	- [Testing the CLI](#testing-the-cli)
+	- [Releasing](#releasing)
+	- [Timeouts](#timeouts)
+
+# Usage
 
 To wait for a port to open, just use:
 
@@ -24,7 +33,7 @@ The following error codes are return:
 | `1`  | A timeout occured waiting for the port to open. |
 | `2`  | Un unknown error occured waiting for the port to open. The program cannot establish whether the port is open or not. |
 
-## API
+# API
 
 You can use `wait-port` programmatically:
 
@@ -116,3 +125,4 @@ Some more tasks to complete:
  - [X] Diagnostic output with `debug`
  - [ ] Finalise output format, colourise.
  - [ ] Support output on the interval (with an -o option).
+ - [ ] NPM badge
