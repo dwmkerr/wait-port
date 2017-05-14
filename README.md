@@ -10,6 +10,7 @@ Simple binary to wait for a port to open. Useful for docker-compose and general 
   - [Debugging](#debugging)
   - [Testing](#testing)
   - [Testing the CLI](#testing-the-cli)
+  - [Manpage](#manpage)
   - [Releasing](#releasing)
   - [Timeouts](#timeouts)
 
@@ -104,6 +105,10 @@ Debug unit tests with `npm run debug`. Add a `debugger` statement to the line yo
 ## Testing the CLI
 
 Don't install the package to test the CLI. Instead, in the project folder run `npm link`. Now go to whatever folder you want to use the module in and run `npm link wait-port`. It will symlink the package and binary. See [`npm link`](https://docs.npmjs.com/cli/link) for more details.
+
+### Manpage
+
+Installing the CLI will install the manpage. The manpage is at [`./man/wait-port.1`](./man/wait-port.1). After updating the page, test it with `man ./man/wait-port.1` before publishing, as the format can be tricky to work with.
 
 ## Releasing
 
