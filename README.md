@@ -3,13 +3,15 @@
 Simple binary to wait for a port to open. Useful for docker-compose and general server side activities.
 
 - [Usage](#usage)
+  - [Parameters](#parameters)
+  - [Error Codes](#error-codes)
 - [API](#api)
 - [Developer Guide](#developer-guide)
-	- [Debugging](#debugging)
-	- [Testing](#testing)
-	- [Testing the CLI](#testing-the-cli)
-	- [Releasing](#releasing)
-	- [Timeouts](#timeouts)
+  - [Debugging](#debugging)
+  - [Testing](#testing)
+  - [Testing the CLI](#testing-the-cli)
+  - [Releasing](#releasing)
+  - [Timeouts](#timeouts)
 
 # Usage
 
@@ -19,13 +21,24 @@ To wait for a port to open, just use:
 $ wait-port localhost:3000
 ```
 
-To wait for a port to open, but limit a certain timeout, use:
+To wait for a port to open, but limit to a certain timeout, use:
 
 ```bash
-$ wait-port -t 10 localhost:3000
+$ wait-port -t 10000 localhost:3000
 ```
 
-The following error codes are return:
+### Parameters
+
+The following parameters are accepted:
+
+| Parameter | Usage |
+|-----------|-------|
+| `<target>` | Required. The target to test for. Can be just a port, a colon and port (as one would use with [httpie](https://httpie.org/) or host and port. Examples: `8080`, `:3000`, `127.0.0.1:443`. |
+| `--timeout, -t` | Optional. Timeout (in milliseconds). |
+
+### Error Codes
+
+The following error codes are returned:
 
 | Code | Meaning |
 |------|---------|
@@ -59,8 +72,8 @@ The CLI is a very shallow wrapper around this function. The `params` object take
 
 | CLI Parameter | API Parameter | Notes |
 |---------------|---------------|-------|
-| `<port>`      | `host`        | Optional. Defaults to `localhost`. |
-| `<port>`      | `port`        | Required. Port to wait for. |
+| `<target>`      | `host`        | Optional. Defaults to `localhost`. |
+| `<target>`      | `port`        | Required. Port to wait for. |
 | `--timeout, -t` | `timeout` | Optional. Defaults to `0`. Timeout (in milliseconds). If `0`, then the operation will never timeout. |
 
 # Developer Guide
