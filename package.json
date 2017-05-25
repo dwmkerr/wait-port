@@ -9,10 +9,10 @@
   "man": "./man/wait-port.1",
   "scripts": {
     "lint": "eslint .",
-    "test": "DEBUG=wait-port nyc --report-dir 'artifacts/coverage' -x 'lib/**/*.spec.js' --reporter=html --reporter=text mocha -t 10000 lib/**/*.spec.js",
-    "test:watch": "DEBUG=wait-port mocha --watch -t 10000 lib/**/*.spec.js",
+    "test": "DEBUG=wait-port nyc --report-dir 'artifacts/coverage' -x 'lib/**/*.spec.js' --reporter=html --reporter=text mocha --recursive -t 10000 'lib/**/*.spec.js'",
+    "test:watch": "DEBUG=wait-port mocha --watch --recursive -t 10000 'lib/**/*.spec.js'",
     "report-coverage": "nyc report --reporter=text-lcov > ./artifacts/coverage/coverage.lcov && codecov",
-    "debug": "DEBUG=wait-port mocha --inspect --debug-brk lib/**/*.spec.js"
+    "debug": "DEBUG=wait-port mocha --recursive --inspect --debug-brk 'lib/**/*.spec.js'"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,8 @@
     "eslint": "^3.19.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.3.0",
-    "nyc": "^10.3.2"
+    "nyc": "^10.3.2",
+    "sinon": "^2.3.1"
   },
   "dependencies": {
     "chalk": "^1.1.3",

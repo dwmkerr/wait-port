@@ -10,12 +10,14 @@ const waitPort = require('../lib/wait-port');
 program
   .version(pkg.version)
   .description('Wait for a target to accept connections, e.g: wait-port localhost:8080')
-  .option('-t, --timeout <n>', 'Timeout')
+  .option('-t, --timeout [n]', 'Timeout', parseInt)
+  .option('-o, --output [mode]', 'Output mode (silent, dots). Default is silent.')
   .arguments('<target>')
   .action((target) => {
     //  Validate the parameters (extractTarget) will throw if target is invalid).
     const { host, port } = extractTarget(target);
     const timeout = program.timeout || 0;
+    const output = program.output;
 
     debug(`Timeout: ${timeout}`);
     debug(`Target: ${target} => ${host}:${port}`);
@@ -23,18 +25,13 @@ program
     const params = {
       timeout,
       host,
-      port
+      port,
+      output
     };
 
     waitPort(params)
       .then((open) => {
-        if (open) {
-          console.log(`${port} is accepting connections.`);
-          process.exit(0);
-        } else {
-          console.log(`Timeout waiting for ${port}.`);
-          process.exit(1);
-        }
+        process.exit(open ? 0 : 1);
       })
       .catch((err) => {
         //  Show validation errors in red.
