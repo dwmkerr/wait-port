@@ -2,7 +2,7 @@
 
 Simple binary to wait for a port to open. Useful when writing scripts which need to wait for a server to be availble, creating `docker-compose` commands which wait for servers to start and general server-side shenanigans.
 
-![wait-port screen recordin](./docs/wait-port.gif)
+<img src="./docs/wait-port.gif" alt="wait-port screenshot" width="520px" />
 
 - [Installation](#installation)
 - [Usage](#usage)
