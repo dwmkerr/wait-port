@@ -1,6 +1,8 @@
 # wait-port [![CircleCI](https://circleci.com/gh/dwmkerr/wait-port.svg?style=shield)](https://circleci.com/gh/dwmkerr/wait-port) [![codecov](https://codecov.io/gh/dwmkerr/wait-port/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/wait-port)
 
-Simple binary to wait for a port to open. Useful for docker-compose and general server side activities.
+Simple binary to wait for a port to open. Useful when writing scripts which need to wait for a server to be availble, creating `docker-compose` commands which wait for servers to start and general server-side shenanigans.
+
+![wait-port screen recordin](./docs/wait-port.gif)
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -30,12 +32,13 @@ $ npm install wait-port
 wait-port@0.1.3
 
 $ ./node_modules/.bin/wait-port 8080
-Port 8080 is accepting connections!
+Waiting for localhost:8080.....
+Connected!
 ```
 
 # Usage
 
-To wait for a port to open, just use:
+To wait indefinitely for a port to open, just use:
 
 ```bash
 $ wait-port localhost:3000
@@ -103,6 +106,7 @@ The CLI is a very shallow wrapper around this function. The `params` object take
 This module uses:
 
 | Name | Usage |
+| [`chalk`](https://github.com/chalk/chalk) | Terminal output styling. |
 | [`commander.js`](https://github.com/tj/commander.js) | Utility for building commandline apps. |
 | [`debug`](https://github.com/visionmedia/debug) | Utility for debug output. |
 R [`mocha`](https://mochajs.org/) / [`nyc`](https://github.com/istanbuljs/nyc) | Test runner / coverage. |
