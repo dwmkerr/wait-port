@@ -121,6 +121,8 @@ Run unit tests with `npm test`. Coverage is reported to `artifacts/coverage`.
 
 Debug unit tests with `npm run debug`. Add a `debugger` statement to the line you are interested in, and consider limiting scope with [`.only`](https://mochajs.org/#exclusive-tests).
 
+Run tests continuously, watching source with `npm run test:watch`.
+
 ## Testing the CLI
 
 Don't install the package to test the CLI. Instead, in the project folder run `npm link`. Now go to whatever folder you want to use the module in and run `npm link wait-port`. It will symlink the package and binary. See [`npm link`](https://docs.npmjs.com/cli/link) for more details.
@@ -150,16 +152,3 @@ const promise = waitPort({ port: 9000, interval: 10000 }, 2000);
 In this case, the socket will only attempt to connect every ten seconds. So on the first iteration, the timeout is not reached, then another iteration will be scheduled for after ten seconds, meaning the timeout will happen eight seconds later than one might expect.
 
 The `waitPort` promise may take up to `interval` milliseconds greater than `timeout` to resolve.
-
-## TODO
-
-Some more tasks to complete:
-
- - [ ] Support validation of the timeout commandline parameter
- - [ ] Add an interval commandline parameter
- - [X] Document how to use the API
- - [ ] Package with `pkg`
- - [X] Diagnostic output with `debug`
- - [ ] Finalise output format, colourise.
- - [ ] Support output on the interval (with an -o option).
- - [ ] NPM badge

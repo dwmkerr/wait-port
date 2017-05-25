@@ -1,14 +1,16 @@
 #!/usr/bin/env node
+const chalk = require('chalk');
 const debug = require('debug')('wait-port');
 const program = require('commander');
 const pkg = require('../package.json');
 const extractTarget = require('../lib/extract-target');
+const ValidationError = require('../lib/validation-error');
 const waitPort = require('../lib/wait-port');
 
 program
   .version(pkg.version)
   .description('Wait for a target to accept connections, e.g: wait-port localhost:8080')
-  .option('-t, --timeout <n>', 'Timeout', parseInt)
+  .option('-t, --timeout <n>', 'Timeout')
   .arguments('<target>')
   .action((target) => {
     //  Validate the parameters (extractTarget) will throw if target is invalid).
@@ -35,7 +37,12 @@ program
         }
       })
       .catch((err) => {
-        console.error(`Unknown error occured waiting for ${port}: ${err}`);
+        //  Show validation errors in red.
+        if (err instanceof ValidationError) {
+          console.error(chalk.red(err.message));
+        } else {
+          console.error(`Unknown error occurred waiting for ${port}: ${err}`);
+        }
       });
   });
 
