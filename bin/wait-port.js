@@ -38,8 +38,10 @@ program
         //  Show validation errors in red.
         if (err instanceof ValidationError) {
           console.error(chalk.red(err.message));
+          process.exit(2);
         } else {
-          console.error(`Unknown error occurred waiting for ${port}: ${err}`);
+          console.error(`Unknown error occurred waiting for ${target}: ${err}`);
+          process.exit(3);
         }
       });
   });
