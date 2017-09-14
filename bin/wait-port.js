@@ -15,18 +15,19 @@ program
   .arguments('<target>')
   .action((target) => {
     //  Validate the parameters (extractTarget) will throw if target is invalid).
-    const { protocol, host, port } = extractTarget(target);
+    const { protocol, host, port, path } = extractTarget(target);
     const timeout = program.timeout || 0;
     const output = program.output;
 
     debug(`Timeout: ${timeout}`);
-    debug(`Target: ${target} => ${protocol}://${host}:${port}`);
+    debug(`Target: ${target} => ${protocol}://${host}:${port}${path}`);
 
     const params = {
       timeout,
       protocol,
       host,
       port,
+      path,
       output
     };
 
