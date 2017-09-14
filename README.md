@@ -1,6 +1,6 @@
 # wait-port [![CircleCI](https://circleci.com/gh/dwmkerr/wait-port.svg?style=shield)](https://circleci.com/gh/dwmkerr/wait-port) [![codecov](https://codecov.io/gh/dwmkerr/wait-port/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/wait-port) [![npm version](https://badge.fury.io/js/wait-port.svg)](https://badge.fury.io/js/wait-port)
 
-Simple binary to wait for a port to open. Useful when writing scripts which need to wait for a server to be availble, creating `docker-compose` commands which wait for servers to start and general server-side shenanigans.
+Simple binary to wait for a port to open. Useful when writing scripts which need to wait for a server to be availble, creating `docker-compose` commands which wait for servers to start and general server-side shenanigans. Can also wait for an HTTP endpoint to successfully respond.
 
 <img src="https://github.com/dwmkerr/wait-port/raw/master/docs/wait-port.gif" alt="wait-port screenshot" width="520px" />
 
@@ -48,6 +48,12 @@ To wait for a port to open, but limit to a certain timeout, use:
 
 ```bash
 $ wait-port -t 10000 localhost:3000
+```
+
+To wait for an HTTP endpoint to respond with a 200 class status code, include the `http://` protocol:
+
+```bash
+$ wait-port http://:3000/healthcheck
 ```
 
 ### Parameters
