@@ -30,7 +30,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^6.0.0",
     "nyc": "^11.4.1",
-    "sinon": "7.2.4"
+    "sinon": "7.2.6"
   },
   "dependencies": {
     "chalk": "^2.3.0",
