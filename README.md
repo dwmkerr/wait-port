@@ -153,6 +153,14 @@ git push --tags
 npm publish
 ```
 
+## CI/CD
+
+CI runs on CircleCI 2. You can validate the Circle configuration with the following command:
+
+```
+make circleci
+```
+
 ## Timeouts
 
 The timeout option for `waitPort` is used terminate attempts to open the socket *after* a certain amount of time has passed. Please note that operations can take significantly longer than the timeout. For example:
