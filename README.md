@@ -36,6 +36,8 @@ Waiting for localhost:8080.....
 Connected!
 ```
 
+Requires Node 8 or later.
+
 # Usage
 
 To wait indefinitely for a port to open, just use:

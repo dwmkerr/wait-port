@@ -6,6 +6,9 @@
   "bin": {
     "wait-port": "./bin/wait-port.js"
   },
+  "engines": {
+    "node": ">=8"
+  },
   "man": "./man/wait-port.1",
   "scripts": {
     "lint": "eslint .",
