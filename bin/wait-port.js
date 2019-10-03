@@ -13,15 +13,18 @@ program
   .description('Wait for a target to accept connections, e.g: wait-port localhost:8080')
   .option('-t, --timeout [n]', 'Timeout', parseInt)
   .option('-o, --output [mode]', 'Output mode (silent, dots). Default is silent.')
+  .option('--wait-for-dns', 'Do not fail on ENOTFOUND, meaning you can wait for DNS record creation. Default is false.')
   .arguments('<target>')
   .action((target) => {
     //  Validate the parameters (extractTarget) will throw if target is invalid).
     const { protocol, host, port, path } = extractTarget(target);
     const timeout = program.timeout || 0;
     const output = program.output;
+    const waitForDns = program.waitForDns;
 
     debug(`Timeout: ${timeout}`);
     debug(`Target: ${target} => ${protocol}://${host}:${port}${path}`);
+    debug(`waitForDns: ${waitForDns}`);
 
     const params = {
       timeout,
@@ -29,7 +32,8 @@ program
       host,
       port,
       path,
-      output
+      output,
+      waitForDns,
     };
 
     waitPort(params)
@@ -59,6 +63,7 @@ program.on('--help', () => {
   console.log('    $ wait-port -t 10 :8080');
   console.log('    $ wait-port google.com:443');
   console.log('    $ wait-port http://localhost:5000/healthcheck');
+  console.log('    $ wait-port --wait-for-dns http://mynewdomain.com:80');
   console.log('');
 });
 

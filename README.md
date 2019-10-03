@@ -65,6 +65,7 @@ The following parameters are accepted:
 | `<target>` | Required. The target to test for. Can be just a port, a colon and port (as one would use with [httpie](https://httpie.org/) or host and port. Examples: `8080`, `:3000`, `127.0.0.1:443`. |
 | `--output, -o`  | Optional. Output style to use. Can be `dots` (default) or `silent` (no output). |
 | `--timeout, -t` | Optional. Timeout (in milliseconds). |
+| `--wait-for-dns` | Optional. Do not error if the response is `ENOTFOUND`, just keep on waiting (useful if you are waiting for a DNS record to also be created). |
 
 ### Error Codes
 
@@ -108,6 +109,7 @@ The CLI is a very shallow wrapper around this function. The `params` object take
 | `<target>`      | `port`        | Required. Port to wait for. |
 | `--output`      | `output`      | Optional. Defaults to `dots`. Output style to use. `silent` also accepted. |
 | `--timeout, -t` | `timeout` | Optional. Defaults to `0`. Timeout (in milliseconds). If `0`, then the operation will never timeout. |
+| `--wait-for-dns` | `waitForDns` | Optional. Defaults to `false`. |
 
 # Developer Guide
 
