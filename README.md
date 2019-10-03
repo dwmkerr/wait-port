@@ -75,8 +75,10 @@ The following error codes are returned:
 | Code | Meaning |
 |------|---------|
 | `0`  | The specified port on the host is accepting connections. |
-| `1`  | A timeout occured waiting for the port to open. |
-| `2`  | Un unknown error occured waiting for the port to open. The program cannot establish whether the port is open or not. |
+| `1`  | A timeout occurred waiting for the port to open. |
+| `2`  | An unknown error occurred waiting for the port to open. The program cannot establish whether the port is open or not. |
+| `3`  | The address cannot be found (e.g. no DNS entry, or unresolvable). |
+r
 
 # API
 
