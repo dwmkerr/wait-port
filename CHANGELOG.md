@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/dwmkerr/wait-port/compare/v0.2.3...v0.2.4) (2019-10-03)
+
+
+### Features
+
+* add the 'wait-for-dns' flag ([#47](https://github.com/dwmkerr/wait-port/issues/47)) ([31418c2](https://github.com/dwmkerr/wait-port/commit/31418c2)), closes [#41](https://github.com/dwmkerr/wait-port/issues/41)
+
 ### [0.2.3](https://github.com/dwmkerr/wait-port/compare/v0.2.2...v0.2.3) (2019-10-03)
 
 
