@@ -114,12 +114,12 @@ The CLI is a very shallow wrapper around this function. The `params` object take
 
 This module uses:
 
-| Name                                                 | Usage                                  |
-|------------------------------------------------------|----------------------------------------|
-| [`chalk`](https://github.com/chalk/chalk)            | Terminal output styling.               |
-| [`commander.js`](https://github.com/tj/commander.js) | Utility for building commandline apps. |
-| [`debug`](https://github.com/visionmedia/debug)      | Utility for debug output.              |
-R [`mocha`](https://mochajs.org/) / [`nyc`](https://github.com/istanbuljs/nyc) | Test runner / coverage. |
+| Name                                                                         | Usage                                  |
+|------------------------------------------------------------------------------|----------------------------------------|
+| [`chalk`](https://github.com/chalk/chalk)                                    | Terminal output styling.               |
+| [`commander.js`](https://github.com/tj/commander.js)                         | Utility for building commandline apps. |
+| [`debug`](https://github.com/visionmedia/debug)                              | Utility for debug output.              |
+| [`mocha`](https://mochajs.org/) / [`nyc`](https://github.com/istanbuljs/nyc) | Test runner / coverage.                |
 
 ## Debugging
 
