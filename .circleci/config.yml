@@ -27,16 +27,10 @@ jobs:
           name: upload coverage
           command: npm run report-coverage
       - store_artifacts:
-          path: ./artifacts/test-results.xml
-          prefix: tests
-      - store_artifacts:
-          path: ./artifacts/coverage/coverage.lcov
-          prefix: coverage
-      - store_artifacts:
           path: ./artifacts
           prefix: artifacts
       - store_test_results:
-          path: ./artifacts/test-results.xml
+          path: ./artifacts/test-reports
 workflows:
   version: 2
   test:
