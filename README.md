@@ -36,6 +36,8 @@ Waiting for localhost:8080.....
 Connected!
 ```
 
+Requires Node 8 or later.
+
 # Usage
 
 To wait indefinitely for a port to open, just use:
@@ -77,7 +79,6 @@ The following error codes are returned:
 | `1`  | A timeout occurred waiting for the port to open. |
 | `2`  | An unknown error occurred waiting for the port to open. The program cannot establish whether the port is open or not. |
 | `3`  | The address cannot be found (e.g. no DNS entry, or unresolvable). |
-r
 
 # API
 
@@ -115,11 +116,12 @@ The CLI is a very shallow wrapper around this function. The `params` object take
 
 This module uses:
 
-| Name | Usage |
-| [`chalk`](https://github.com/chalk/chalk) | Terminal output styling. |
-| [`commander.js`](https://github.com/tj/commander.js) | Utility for building commandline apps. |
-| [`debug`](https://github.com/visionmedia/debug) | Utility for debug output. |
-R [`mocha`](https://mochajs.org/) / [`nyc`](https://github.com/istanbuljs/nyc) | Test runner / coverage. |
+| Name                                                                         | Usage                                  |
+|------------------------------------------------------------------------------|----------------------------------------|
+| [`chalk`](https://github.com/chalk/chalk)                                    | Terminal output styling.               |
+| [`commander.js`](https://github.com/tj/commander.js)                         | Utility for building commandline apps. |
+| [`debug`](https://github.com/visionmedia/debug)                              | Utility for debug output.              |
+| [`mocha`](https://mochajs.org/) / [`nyc`](https://github.com/istanbuljs/nyc) | Test runner / coverage.                |
 
 ## Debugging
 
@@ -152,9 +154,19 @@ Installing the CLI will install the manpage. The manpage is at [`./man/wait-port
 Kick out a new release with:
 
 ```bash
-npm version patch # or minor/major
-git push --tags
+npm run release
+git push --follow-tags
 npm publish
+```
+
+[`standard-version`](https://github.com/conventional-changelog/standard-version) is used to manage version numbers and the [`CHANGELOG.md`](./CHANGELOG.md) file.
+
+## CI/CD
+
+CI runs on CircleCI 2. You can validate the Circle configuration with the following command:
+
+```
+make circleci
 ```
 
 ## Timeouts
