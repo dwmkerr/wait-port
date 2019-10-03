@@ -1,9 +1,0 @@
-machine:
-  node:
-    version: 6
-test:
-  override:
-    - npm run lint
-    - npm test
-  post:
-    - npm run report-coverage
