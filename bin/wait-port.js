@@ -4,7 +4,8 @@ const debug = require('debug')('wait-port');
 const program = require('commander');
 const pkg = require('../package.json');
 const extractTarget = require('../lib/extract-target');
-const ValidationError = require('../lib/validation-error');
+const ValidationError = require('../lib/errors/validation-error');
+const ConnectionError = require('../lib/errors/connection-error');
 const waitPort = require('../lib/wait-port');
 
 program
@@ -38,8 +39,11 @@ program
       .catch((err) => {
         //  Show validation errors in red.
         if (err instanceof ValidationError) {
-          console.error(chalk.red(err.message));
+          console.error(`\n\n  ${chalk.red(err.message)}`);
           process.exit(2);
+        } else if (err instanceof ConnectionError) {
+          console.error(`\n\n  ${chalk.red(err.message)}`);
+          process.exit(4);
         } else {
           console.error(`Unknown error occurred waiting for ${target}: ${err}`);
           process.exit(3);
