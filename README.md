@@ -78,7 +78,6 @@ The following error codes are returned:
 | `1`  | A timeout occurred waiting for the port to open. |
 | `2`  | An unknown error occurred waiting for the port to open. The program cannot establish whether the port is open or not. |
 | `3`  | The address cannot be found (e.g. no DNS entry, or unresolvable). |
-r
 
 # API
 
@@ -152,10 +151,12 @@ Installing the CLI will install the manpage. The manpage is at [`./man/wait-port
 Kick out a new release with:
 
 ```bash
-npm version patch # or minor/major
-git push --tags
+npm run release
+git push --follow-tags
 npm publish
 ```
+
+[`standard-version`](https://github.com/conventional-changelog/standard-version) is used to manage version numbers and the [`CHANGELOG.md`](./CHANGELOG.md) file.
 
 ## CI/CD
 
