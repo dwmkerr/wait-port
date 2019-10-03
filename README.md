@@ -36,6 +36,8 @@ Waiting for localhost:8080.....
 Connected!
 ```
 
+Requires Node 8 or later.
+
 # Usage
 
 To wait indefinitely for a port to open, just use:
@@ -151,6 +153,14 @@ Kick out a new release with:
 npm version patch # or minor/major
 git push --tags
 npm publish
+```
+
+## CI/CD
+
+CI runs on CircleCI 2. You can validate the Circle configuration with the following command:
+
+```
+make circleci
 ```
 
 ## Timeouts
