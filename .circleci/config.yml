@@ -33,10 +33,10 @@ jobs:
           path: ./artifacts/coverage/coverage.lcov
           prefix: coverage
       - store_artifacts:
-          path: artifacts
+          path: ./artifacts
           prefix: artifacts
       - store_test_results:
-          path: test-results.xml
+          path: ./artifacts/test-results.xml
 workflows:
   version: 2
   test:
