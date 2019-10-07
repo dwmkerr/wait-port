@@ -1,0 +1,10 @@
+# Logs
+npm-debug.log*
+
+# Tests
+**/*.spec.js
+
+# Dependency directories
+node_modules
+artifacts/
+.nyc_output/
