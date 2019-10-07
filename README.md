@@ -85,6 +85,7 @@ The following error codes are returned:
 | `1`  | A timeout occurred waiting for the port to open. |
 | `2`  | An unknown error occurred waiting for the port to open. The program cannot establish whether the port is open or not. |
 | `3`  | The address cannot be found (e.g. no DNS entry, or unresolvable). |
+| `4`  | The target (host and port) is invalid. |
 
 # API
 

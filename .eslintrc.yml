@@ -1,11 +1,18 @@
+extends:
+  - eslint:recommended
+  - plugin:node/recommended
 env:
-  es6: true
   node: true
   mocha: true
-extends: 'eslint:recommended'
-parserOptions:
-  sourceType: module
+plugins:
+  - import
 rules:
+  no-console: 0
+  # Sometimes I like a single 'return' statement in a full bloc, e.g. see the
+  # tests, so relax the requirement to have single return statements
+  arrow-body-style: 0
+  import/no-extraneous-dependencies: [error, { devDependencies: ['**/*.spec.js'] }]
+  no-process-exit: 0
   indent:
     - error
     - 2
@@ -18,4 +25,3 @@ rules:
   semi:
     - error
     - always
-  no-console: 0
