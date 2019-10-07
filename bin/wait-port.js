@@ -4,8 +4,9 @@ const debug = require('debug')('wait-port');
 const program = require('commander');
 const pkg = require('../package.json');
 const extractTarget = require('../lib/extract-target');
-const ValidationError = require('../lib/errors/validation-error');
 const ConnectionError = require('../lib/errors/connection-error');
+const TargetError = require('../lib/errors/target-error');
+const ValidationError = require('../lib/errors/validation-error');
 const waitPort = require('../lib/wait-port');
 
 program
@@ -15,44 +16,45 @@ program
   .option('-o, --output [mode]', 'Output mode (silent, dots). Default is silent.')
   .option('--wait-for-dns', 'Do not fail on ENOTFOUND, meaning you can wait for DNS record creation. Default is false.')
   .arguments('<target>')
-  .action((target) => {
-    //  Validate the parameters (extractTarget) will throw if target is invalid).
-    const { protocol, host, port, path } = extractTarget(target);
-    const timeout = program.timeout || 0;
-    const output = program.output;
-    const waitForDns = program.waitForDns;
+  .action(async (target) => {
+    try {
+      const { protocol, host, port, path } = extractTarget(target);
+      const timeout = program.timeout || 0;
+      const output = program.output;
+      const waitForDns = program.waitForDns;
 
-    debug(`Timeout: ${timeout}`);
-    debug(`Target: ${target} => ${protocol}://${host}:${port}${path}`);
-    debug(`waitForDns: ${waitForDns}`);
+      debug(`Timeout: ${timeout}`);
+      debug(`Target: ${target} => ${protocol}://${host}:${port}${path}`);
+      debug(`waitForDns: ${waitForDns}`);
 
-    const params = {
-      timeout,
-      protocol,
-      host,
-      port,
-      path,
-      output,
-      waitForDns,
-    };
+      const params = {
+        timeout,
+        protocol,
+        host,
+        port,
+        path,
+        output,
+        waitForDns,
+      };
 
-    waitPort(params)
-      .then((open) => {
-        process.exit(open ? 0 : 1);
-      })
-      .catch((err) => {
-        //  Show validation errors in red.
-        if (err instanceof ValidationError) {
-          console.error(`\n\n  ${chalk.red(err.message)}`);
-          process.exit(2);
-        } else if (err instanceof ConnectionError) {
-          console.error(`\n\n  ${chalk.red(err.message)}`);
-          process.exit(4);
-        } else {
-          console.error(`Unknown error occurred waiting for ${target}: ${err}`);
-          process.exit(3);
-        }
-      });
+      const open = await waitPort(params);
+      process.exit(open ? 0 : 1);
+    } catch (err) {
+      //  Show validation errors in red.
+      if (err instanceof ValidationError) {
+        console.error(chalk.red(`\n  Validation Error: ${err.message}`));
+        process.exit(2);
+      } else if (err instanceof ConnectionError) {
+        console.error(chalk.red(`\n\n  Connection Error Error: ${err.message}`));
+        process.exit(4);
+      } else if (err instanceof TargetError) {
+        console.error(chalk.red(`\n  Target Error: ${err.message}`));
+        process.exit(4);
+      } else {
+        console.error(chalk.red(`\n  Unknown error occurred waiting for ${target}: ${err}`));
+        process.exit(3);
+      }
+    }
   });
 
 //  Enrich the help.
