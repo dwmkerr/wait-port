@@ -12,7 +12,7 @@ interface ServerLocation {
   /** If using the 'http' protocol, the path to check
    * (defaults to '/' if protocol is 'http') */
   path?: string;
-  
+
   /** The number of milliseconds to wait on each connection attempt
    * (defaults to 1000) */
   interval?: number;
