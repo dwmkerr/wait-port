@@ -32,4 +32,4 @@ interface ServerLocation {
 
 declare const waitPort: (server: ServerLocation) => Promise<boolean>;
 
-export default waitPort;
+export = waitPort;
