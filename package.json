@@ -10,6 +10,12 @@
     "node": ">=8"
   },
   "man": "./man/wait-port.1",
+  "files": [
+    "bin",
+    "man",
+    "lib",
+    "index.d.ts"
+  ],
   "scripts": {
     "lint": "eslint .",
     "test": "DEBUG=wait-port nyc --report-dir 'artifacts/coverage' -x 'lib/**/*.spec.js' --reporter=html --reporter=text mocha --recursive -t 10000 'lib/**/*.spec.js'",
