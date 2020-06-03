@@ -13,6 +13,9 @@ circleci:
 	circleci config validate -c .circleci/config.yml
 	circleci build --job test
 
+package: build
+	./scripts/build-packages.sh "$(PWD)/package.json"
+
 # Let make know that these commands are not folder or file names, but command
 # names (otherwise a folder called 'test' could stop the test recipe working).
-.PHONY: build test circleci
+.PHONY: build test circleci package
