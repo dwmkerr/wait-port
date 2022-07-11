@@ -1,6 +1,6 @@
 {
   "name": "wait-port",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "Utility to wait for a TCP port to open.",
   "main": "./lib/wait-port.js",
   "bin": {
