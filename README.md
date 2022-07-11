@@ -42,7 +42,7 @@ Waiting for localhost:8080.....
 Connected!
 ```
 
-Node LTS should be used, at this stage the package supports Node.js 14 and higher.
+Requires Node 8 or later.
 
 # Usage
 
@@ -91,7 +91,7 @@ The following error codes are returned:
 
 You can use `wait-port` programmatically:
 
-```js
+```
 const waitPort = require('wait-port');
 
 const params = {
@@ -170,10 +170,11 @@ npm publish
 
 ## CI/CD
 
-CI/CD runs as a set of GitHub actions. There are two pipelines:
+CI runs on CircleCI 2. You can validate the Circle configuration with the following command:
 
-- [Validate Pull Request](https://github.com/dwmkerr/wait-port/actions/workflows/pull-request.yaml) - confirms that a PR meets the required standardsd
-- [Release Please](https://github.com/dwmkerr/wait-port/actions/workflows/release-please.yaml) - prepares changelogs and release PRs, and publishes to NPM
+```
+make circleci
+```
 
 ## Timeouts
 
