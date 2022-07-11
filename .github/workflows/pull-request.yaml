@@ -1,0 +1,32 @@
+name: Validate Pull Request
+
+# This workflow verifies that the site will build for pull requests.
+on: [pull_request]
+
+jobs:
+  validate-pull-request:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Fixup Git URLs, see:
+    # https://stackoverflow.com/questions/70663523/the-unauthenticated-git-protocol-on-port-9418-is-no-longer-supported
+    - name: Fix up git URLs
+      run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com/"' >> ~/.gitconfig
+
+    # Lint, test, and report coverage.
+    - name: lint
+      run: npm run lint
+    - name: test
+      run: npm test
+    - name: upload coverage
+      run: npm run report-coverage
+    # TODO: to be added to the merge step.
+    # - name: upload coverage
+    #   run: npm run report-coverage
+    # - store_artifacts:
+    #     path: ./artifacts
+    #     prefix: artifacts
+    # - store_test_results:
+    #     path: ./artifacts/test-reports
