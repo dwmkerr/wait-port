@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.13](https://github.com/dwmkerr/wait-port/compare/v0.2.12...v0.2.13) (2022-07-11)
+
+
+### Miscellaneous Chores
+
+* release 0.2.13 ([dfe917d](https://github.com/dwmkerr/wait-port/commit/dfe917d28bb1a8e2289091f584618a0ae3405910))
+
 ## [0.2.12](https://github.com/dwmkerr/wait-port/compare/v0.2.11...v0.2.12) (2022-07-11)
 
 
