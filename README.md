@@ -42,7 +42,7 @@ Waiting for localhost:8080.....
 Connected!
 ```
 
-Node LTS should be used, at this stage the package supports Node.js 14 and higher.
+Ideally, Node LTS should be used however this package is tested successfully with Node.js 10 and upwards.
 
 # Usage
 
