@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.10](https://github.com/dwmkerr/wait-port/compare/v0.2.9...v0.2.10) (2022-07-11)
+
+
+### Bug Fixes
+
+* **http:** send valid HTTP Request ([#70](https://github.com/dwmkerr/wait-port/issues/70)) ([27e83c9](https://github.com/dwmkerr/wait-port/commit/27e83c9e80c6ad0eb5a6395e836fe91ea1a5ba23))
+
 ### [0.2.9](https://github.com/dwmkerr/wait-port/compare/v0.2.8...v0.2.9) (2020-05-26)
 
 ### [0.2.8](https://github.com/dwmkerr/wait-port/compare/v0.2.7...v0.2.8) (2020-05-26)
