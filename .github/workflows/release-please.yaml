@@ -1,0 +1,58 @@
+# The 'release-please' workflow is used to create the 'Release Please' pull
+# request. This PR is opened when we have a new commit to main.
+# See:
+#   https://github.com/googleapis/release-please
+name: Release Please
+on:
+  push:
+    branches:
+      - build/test-release-please
+jobs:
+  release-please:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          package-name: wait-port
+      
+      # If the 'release please' action has been performed, we can actually
+      # deploy the website.
+      # Note: *every* step here needs to check the 'release_created' flag.
+      - name: Checkout
+        uses: actions/checkout@v2
+        if: ${{ steps.release.outputs.release_created }}
+
+      # Fixup Git URLs, see:
+      # https://stackoverflow.com/questions/70663523/the-unauthenticated-git-protocol-on-port-9418-is-no-longer-supported
+      - name: Fix up git URLs
+        run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com/"' >> ~/.gitconfig
+        if: ${{ steps.release.outputs.release_created }}
+
+      # Lint, test, and report coverage.
+      - name: lint
+        run: npm run lint
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: test
+        run: npm test
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: report coverage
+        run: npm run report-coverage
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: store coverage artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: |
+            ./artifacts/**/*.*
+        if: ${{ steps.release.outputs.release_created }}
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        if: ${{ steps.release.outputs.release_created }}
