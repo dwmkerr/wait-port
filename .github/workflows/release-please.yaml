@@ -6,7 +6,7 @@ name: Release Please
 on:
   push:
     branches:
-      - build/test-release-please
+      - main
 jobs:
   release-please:
     runs-on: ubuntu-20.04
