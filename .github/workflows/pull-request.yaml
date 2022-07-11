@@ -16,17 +16,11 @@ jobs:
       run: echo -e '[url "https://github.com/"]\n  insteadOf = "git://github.com/"' >> ~/.gitconfig
 
     # Lint, test, and report coverage.
+    - name: ci
+      run: npm ci
     - name: lint
       run: npm run lint
     - name: test
       run: npm test
     - name: upload coverage
       run: npm run report-coverage
-    # TODO: to be added to the merge step.
-    # - name: upload coverage
-    #   run: npm run report-coverage
-    # - store_artifacts:
-    #     path: ./artifacts
-    #     prefix: artifacts
-    # - store_test_results:
-    #     path: ./artifacts/test-reports

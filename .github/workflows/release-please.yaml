@@ -32,16 +32,12 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
 
       # Lint, test, and report coverage.
-      - name: lint
-        run: npm run lint
-        if: ${{ steps.release.outputs.release_created }}
-
       - name: test
-        run: npm test
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: report coverage
-        run: npm run report-coverage
+        run: |
+          npm ci
+          npm run lint
+          npm test
+          npm run report-coverage
         if: ${{ steps.release.outputs.release_created }}
 
       - name: store coverage artifacts
