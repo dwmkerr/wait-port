@@ -44,6 +44,8 @@ Connected!
 
 Ideally, Node LTS should be used however this package is tested successfully with Node.js 10 and upwards.
 
+Please avoid using version 0.2.13 - this incorrectly included a breaking change. Use 0.2.14 if you need compatibility with Node 8, or 0.3.0 or upwards otherwise.
+
 # Usage
 
 To wait indefinitely for a port to open, just use:
