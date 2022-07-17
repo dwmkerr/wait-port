@@ -14,6 +14,7 @@ program
   .description('Wait for a target to accept connections, e.g: wait-port localhost:8080')
   .option('-t, --timeout [n]', 'Timeout', parseInt)
   .option('-o, --output [mode]', 'Output mode (silent, dots). Default is silent.')
+  .option('-f, --family [family]', 'IP family (0, 4, 6). Default is 0.', parseInt)
   .option('--wait-for-dns', 'Do not fail on ENOTFOUND, meaning you can wait for DNS record creation. Default is false.')
   .arguments('<target>')
   .action(async (target) => {
@@ -21,17 +22,20 @@ program
       const { protocol, host, port, path } = extractTarget(target);
       const timeout = program.timeout || 0;
       const output = program.output;
+      const family = program.family || 0;
       const waitForDns = program.waitForDns;
 
       debug(`Timeout: ${timeout}`);
       debug(`Target: ${target} => ${protocol}://${host}:${port}${path}`);
       debug(`waitForDns: ${waitForDns}`);
+      debug(`Family: ${family}`);
 
       const params = {
         timeout,
         protocol,
         host,
         port,
+        family,
         path,
         output,
         waitForDns,

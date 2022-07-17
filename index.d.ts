@@ -6,6 +6,9 @@ interface ServerLocation {
    * (defaults to 'localhost') */
   host?: string;
 
+  /** Set the IP family for the name resolution */
+  family?: 0 | 4 | 6;
+
   /** Set to 'http' to test an HTTP request as well */
   protocol?: 'http';
 
