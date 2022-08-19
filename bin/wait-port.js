@@ -18,7 +18,6 @@ program
   .arguments('<target>')
   .action(async (target) => {
     try {
-      
       const options = program.opts();
       const { protocol, host, port, path } = extractTarget(target);
       const timeout = options.timeout || 0;
