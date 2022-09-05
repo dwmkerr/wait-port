@@ -18,10 +18,11 @@ program
   .arguments('<target>')
   .action(async (target) => {
     try {
+      const options = program.opts();
       const { protocol, host, port, path } = extractTarget(target);
-      const timeout = program.timeout || 0;
-      const output = program.output;
-      const waitForDns = program.waitForDns;
+      const timeout = options.timeout || 0;
+      const output = options.output;
+      const waitForDns = options.waitForDns;
 
       debug(`Timeout: ${timeout}`);
       debug(`Target: ${target} => ${protocol}://${host}:${port}${path}`);
