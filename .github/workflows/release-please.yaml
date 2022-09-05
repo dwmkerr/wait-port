@@ -10,6 +10,11 @@ on:
 jobs:
   release-please:
     runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x, 18.x]
+
     steps:
       - uses: google-github-actions/release-please-action@v3
         id: release
@@ -26,10 +31,10 @@ jobs:
         if: ${{ steps.release.outputs.release_created }}
 
       # Setup the right version of Node.js.
-      - name: Setup Node 12
+      - name: Setup Node ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
         if: ${{ steps.release.outputs.release_created }}
 
