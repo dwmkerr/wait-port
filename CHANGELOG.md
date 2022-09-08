@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/dwmkerr/wait-port/compare/v0.3.1...v1.0.0) (2022-09-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Returns now an object instead of an boolean. The object contains the property `open: boolean` and if `open` is `true` it will also contain `ipVersion` which will be `4` or `6` dependening on which IP version the open port was found on.
+
+### Bug Fixes
+
+* Check both IPv4 and IPv6 when dns-name supplied ([#84](https://github.com/dwmkerr/wait-port/issues/84)) ([3c3821c](https://github.com/dwmkerr/wait-port/commit/3c3821ca7e7079ca238ce28c0886b0fabaa49470))
+
 ## [0.3.1](https://github.com/dwmkerr/wait-port/compare/v0.3.0...v0.3.1) (2022-09-05)
 
 
