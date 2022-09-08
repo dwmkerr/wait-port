@@ -102,8 +102,8 @@ const params = {
 };
 
 waitPort(params)
-  .then((open) => {
-    if (open) console.log('The port is now open!');
+  .then(({ open, ipVersion }) => {
+    if (open) console.log(`The port is now open on IPv${ipVersion}!`);
     else console.log('The port did not open before the timeout...');
   })
   .catch((err) => {

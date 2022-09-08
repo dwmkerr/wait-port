@@ -30,6 +30,11 @@ interface ServerLocation {
   output?: 'dots' | 'silent';
 }
 
-declare const waitPort: (server: ServerLocation) => Promise<boolean>;
+interface ReturnObject {
+  open: boolean;
+  ipVersion?: 4 | 6;
+}
+
+declare const waitPort: (server: ServerLocation) => Promise<ReturnObject>;
 
 export = waitPort;
