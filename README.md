@@ -8,7 +8,7 @@ Simple binary to wait for a port to open. Useful when writing scripts which need
 - Wait for DNS records to be resolvable
 - Wait for application servers to start
 
-<img src="https://github.com/dwmkerr/wait-port/raw/master/docs/wait-port.gif" alt="wait-port screenshot" width="520px" />
+<img src="./docs/wait-port.gif" alt="wait-port screenshot" width="520px" />
 
 - [Installation](#installation)
 - [Usage](#usage)
