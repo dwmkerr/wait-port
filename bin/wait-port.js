@@ -38,7 +38,7 @@ program
         waitForDns,
       };
 
-      const open = await waitPort(params);
+      const { open } = await waitPort(params);
       process.exit(open ? 0 : 1);
     } catch (err) {
       //  Show validation errors in red.
