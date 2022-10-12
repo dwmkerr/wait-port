@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.3](https://github.com/dwmkerr/wait-port/compare/v1.0.2...v1.0.3) (2022-10-12)
+
+
+### Bug Fixes
+
+* fix publish ([#95](https://github.com/dwmkerr/wait-port/issues/95)) ([446798a](https://github.com/dwmkerr/wait-port/commit/446798a9cf789b38b1ea84ee6306f2f2e34fd3e8))
+
 ## [1.0.2](https://github.com/dwmkerr/wait-port/compare/v1.0.1...v1.0.2) (2022-10-12)
 
 
