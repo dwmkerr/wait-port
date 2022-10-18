@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.4](https://github.com/dwmkerr/wait-port/compare/v1.0.3...v1.0.4) (2022-10-18)
+
+
+### Bug Fixes
+
+* Handle systems without IPv6 properly ([#97](https://github.com/dwmkerr/wait-port/issues/97)) ([7cc0fac](https://github.com/dwmkerr/wait-port/commit/7cc0facab2c6735b6f03c1528a1114d1d9658eae))
+
 ## [1.0.3](https://github.com/dwmkerr/wait-port/compare/v1.0.2...v1.0.3) (2022-10-12)
 
 
