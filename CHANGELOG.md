@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/dwmkerr/wait-port/compare/v1.0.4...v1.1.0) (2023-09-20)
+
+
+### Features
+
+* add autoSelectFamily for happy eyeballs support ([#99](https://github.com/dwmkerr/wait-port/issues/99)) ([bee455e](https://github.com/dwmkerr/wait-port/commit/bee455e7a993f165cf440a7b502cb769905e81a8))
+
 ## [1.0.4](https://github.com/dwmkerr/wait-port/compare/v1.0.3...v1.0.4) (2022-10-18)
 
 
