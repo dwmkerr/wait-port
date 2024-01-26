@@ -107,7 +107,7 @@ waitPort(params)
     else console.log('The port did not open before the timeout...');
   })
   .catch((err) => {
-    console.err(`An unknown error occured while waiting for the port: ${err}`);
+    console.error(`An unknown error occured while waiting for the port: ${err}`);
   });
 ```
 
