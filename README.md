@@ -1,4 +1,7 @@
 # wait-port
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Release Please](https://github.com/dwmkerr/wait-port/actions/workflows/release-please.yaml/badge.svg)](https://github.com/dwmkerr/wait-port/actions/workflows/release-please.yaml) [![codecov](https://codecov.io/gh/dwmkerr/wait-port/branch/master/graph/badge.svg)](https://codecov.io/gh/dwmkerr/wait-port) [![npm version](https://badge.fury.io/js/wait-port.svg)](https://badge.fury.io/js/wait-port) [![Greenkeeper badge](https://badges.greenkeeper.io/dwmkerr/wait-port.svg)](https://greenkeeper.io/) [![GuardRails badge](https://badges.guardrails.io/dwmkerr/wait-port.svg?token=569f2cc38a148f785f3a38ef0bcf5f5964995d7ca625abfad9956b14bd06ad96&provider=github)](https://dashboard.guardrails.io/default/gh/dwmkerr/wait-port)
 
@@ -188,3 +191,25 @@ const promise = waitPort({ port: 9000, interval: 10000 }, 2000);
 In this case, the socket will only attempt to connect every ten seconds. So on the first iteration, the timeout is not reached, then another iteration will be scheduled for after ten seconds, meaning the timeout will happen eight seconds later than one might expect.
 
 The `waitPort` promise may take up to `interval` milliseconds greater than `timeout` to resolve.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://barker.codes"><img src="https://avatars.githubusercontent.com/u/29986418?v=4?s=100" width="100px;" alt="Kieran Barker"/><br /><sub><b>Kieran Barker</b></sub></a><br /><a href="https://github.com/dwmkerr/wait-port/commits?author=kieranbarker" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
