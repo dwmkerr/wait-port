@@ -49,5 +49,9 @@
     "chalk": "^4.1.2",
     "commander": "^9.3.0",
     "debug": "^4.3.4"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/dwmkerr"
   }
 }
